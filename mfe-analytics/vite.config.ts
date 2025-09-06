@@ -9,7 +9,7 @@ export default defineConfig({
       name: "analyticsReports",
       filename: "remoteEntry.js",
       exposes: {
-        "./app/bootstrap": "./app/bootstrap.ts",
+        "./app/bootstrap": "./app/bootstrap.tsx",
       },
       shared: {
         react: { singleton: true, requiredVersion: "^18.0.0" },

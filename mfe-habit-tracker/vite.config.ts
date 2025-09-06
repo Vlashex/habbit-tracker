@@ -9,20 +9,15 @@ export default defineConfig({
       name: "habitTracker",
       filename: "remoteEntry.js",
       exposes: {
-        "./app/bootstrap": "./app/main.ts",
+        "./app/bootstrap": "./src/app/bootstrap.ts",
       },
-      shared: {
-        react: { singleton: true, requiredVersion: "^18.0.0" },
-        "react-dom": { singleton: true, requiredVersion: "^18.0.0" },
-        vue: { requiredVersion: "^3.0.0" },
-        "solid-js": { requiredVersion: "^1.0.0" },
-      },
+      shared: ["vue"],
     }),
   ],
-  server: {
-    port: 3001,
-  },
   build: {
     target: "esnext",
+    modulePreload: false, // обязательно для federation!
+    cssCodeSplit: false, // часто рекомендуют, чтобы стили remote корректно подгружались
+    minify: false,
   },
 });
